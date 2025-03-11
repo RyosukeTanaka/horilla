@@ -9,7 +9,15 @@ services:
     restart: unless-stopped
     environment:
       DATABASE_URL: "postgres://postgres:postgres@db:5432/horilla"
-    command: ./entrypoint.sh
+      DB_NAME: "horilla"
+      DB_USER: "postgres"
+      DB_PASSWORD: "postgres"
+      DB_HOST: "db"
+      DB_PORT: "5432"
+    command: >
+      sh -c "python3 manage.py makemigrations && 
+             python3 manage.py migrate && 
+             python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./horilla:/app/horilla
     depends_on:

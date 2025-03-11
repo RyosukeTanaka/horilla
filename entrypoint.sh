@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 echo "Waiting for database to be ready..."
 python3 manage.py makemigrations

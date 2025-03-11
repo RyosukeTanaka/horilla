@@ -241,3 +241,10 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# カスタム設定ファイルをインポートして既存の設定を上書き
+try:
+    from .custom_settings import *
+    print("Custom settings imported from custom_settings.py")
+except ImportError:
+    print("No custom_settings.py file found, using default settings")
